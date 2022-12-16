@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <title>QnA 게시판</title>
+  <th:block th:include="common/head"></th:block>
+  <style>
+	th { color: white; background-color: rgb(166, 205, 72);}
+  </style>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <th:block th:include="common/header"></th:block>
+	<h1 style="margin: 15px; text-align: center;">QnA-A 답변 작성</h1>
+	<nav style="width: 1000px; margin-left: 470px; border: 1px #333 solid;" >
+		<table>
+            <tr th:each="qnaDetail : ${qnaDetail}">
+                <th>번호</th>
+                <td th:text="${qnaDetail.no}"></td>
+            </tr>
+            <tr th:each="qnaDetail : ${qnaDetail}">
+                <th>질문 제목</th>
+                <td th:text="${qnaDetail.title}"></td>
+            </tr>
+            <tr th:each="qnaDetail : ${qnaDetail}">
+                <th>질문 내용</th>
+                <td th:text="${qnaDetail.content}"></td>
+            </tr>
+            <tr th:each="qnaDetail : ${qnaDetail}">
+                <th>질문자 아이디</th>
+                <td th:text="${qnaDetail.author}"></td>
+            </tr>
+            <tr th:each="qnaDetail : ${qnaDetail}">
+                <th>고유번호</th>
+                <td th:text="${qnaDetail.parno}"></td>
+            </tr>
+		</table>
+    </nav>
+    <br><hr><br>
+    <nav style="width: 1000px; margin-left: 470px; border: 1px #333 solid;">
+        <form action="qnaAInsert.do" method="post">
+            <table>
+                <tr>
+                    <th>답변 제목</th>
+                    <td><input type="text" id="title" name="title"></td>
+                </tr>
+                <tr>
+                    <th>답변 내용</th>
+                    <td><input type="text" id="content" name="content"></td>
+                </tr>
+                <tr th:each="qnaDetail : ${qnaDetail}">
+                    <th>고유번호</th>
+                    <td><input type="text" name="parno" th:value="${qnaDetail.parno}" readonly></td>
+                </tr>
+            </table>
+            <div class="btn-group">
+                <button class="btn btn-primary" type="submit" style="margin-right: 5px; margin-left: 470px; margin-top: 30px;">답변 작성</button>
+            </div>
+        </form>
+    </nav>
+    <div class="btn-group"></div>
+        <a class="btn btn-primary" type="button" href="qnaList.do" style="margin-top: 30px; margin-left: 810px;">목록으로</a>
+    </div>
+<th:block th:include="common/footer"></th:block>
+</body>
+</html>

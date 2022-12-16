@@ -1,0 +1,36 @@
+server :
+  port : 8099
+  servlet:
+    session:
+      tracking-modes: cookie
+      timeout: 1800
+      
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/shop?characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: a1234
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: hth@gmail.com
+    password: password
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+            required: true
+          auth: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+
+mybatis:
+  config : mybatis-config.xml
+  mapper-locations: mapper/*Mapper.xml
+  
+file:
+  dir: /Users/hth/Desktop/file/
+  

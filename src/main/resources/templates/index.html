@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <title>Main Page</title>
+  <th:block th:include="common/head"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <style type="text/css">
+    .content {
+       background-color: #0a0a0a;
+    }
+    #simg {
+       margin: 0 auto;
+       width: 1200px;
+       height: 500px;
+    }
+    .em {
+       color : #FEFEFE;
+    }
+    #ssimg img {
+       width: 1125px;
+       height: 570px;
+       overflow: hidden;
+    }
+    span {
+      position: absolute;
+      z-index: 100;
+      color: black;
+      margin-left: 400px;
+      margin-top: 50px;
+      font-size: 48px;
+      color: #1f1f1f;
+      line-height: 56px;
+    }
+    strong {
+      position: absolute;
+      z-index: 100;
+      color: black;
+      margin-left: 400px;
+      font-size: 24px;
+      color: #1f1f1f;
+      line-height: 56px;
+      margin-top: 230px;
+    }
+    
+ </style>
+</head>
+<body>
+  <th:block th:include="common/header"/>
+  <section>
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+      </div>
+      <div class="carousel-inner">
+        <span>올해 마지막<br/>
+              최대혜택<br/>
+              올영세일</span>
+              <strong>오늘까지 ~70%할인 누려요</strong>
+        <div class="carousel-item active">
+          <img src="https://image.oliveyoung.co.kr/uploads/images/display/90000010001/1/385951095945631455.jpg" class="d-block w-100" alt="...">     
+        </div>
+        <div class="carousel-item">
+          <img src="https://image.oliveyoung.co.kr/uploads/images/display/90000010001/1/7358836360100640264.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://image.oliveyoung.co.kr/uploads/images/display/90000010001/1/8508959982412157285.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://image.oliveyoung.co.kr/uploads/images/display/90000010001/1/8508959982412157285.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://image.oliveyoung.co.kr/uploads/images/display/90000010001/1/8508959982412157285.jpg" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </section>
+
+  <section>
+    <main class="container">
+      <div class="swiper mySwiper" id="simg">
+          <div class="swiper-wrapper">
+              <div class="swiper-slide" id="ssimg">
+                  <img src="https://www.kangolkorea.com/main/22.jpg" />
+              </div>
+              <div class="swiper-slide" id="ssimg">
+                  <img src="https://www.kangolkorea.com/main/22.jpg" />
+              </div>
+              <div class="swiper-slide" id="ssimg">
+                  <img src="https://www.kangolkorea.com/main/24.jpg" />
+              </div>
+          </div>
+          <div class="swiper-pagination"></div>
+      </div>
+      <script>
+        var swiper = new Swiper(".mySwiper", {
+          effect: "cube",
+          grabCursor: true,
+          autoplay : true,
+          loop:true,
+          loopAdditionalSlides: 1,
+          cubeEffect: {
+            shadow: true,
+            slideShadows: true,
+            shadowOffset: 20,
+            shadowScale: 0.94,
+          },
+          pagination: {
+            el: ".swiper-pagination",
+          },
+        });
+      </script>
+    </main>
+  </section>
+	<th:block th:include="common/footer"/>
+</body>
+</html>

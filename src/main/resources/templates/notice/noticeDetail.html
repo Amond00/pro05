@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <title>자유 게시판 상세보기</title>
+  <th:block th:include="common/head"></th:block>
+  <style>
+	.page { clear:both; width: 100%; min-height:100vh;}
+    .page:after { content:""; display:block; clear:both; }
+    .page_wrap { width: 1200px; margin: 0 auto; }
+    .page_title { padding-top: 1em; text-align: center; margin-bottom: 90px;}
+    .home { color:#333; }
+    .frm { border:2px solid #333; padding: 24px; width: 780px; margin:50px auto; }
+    .tb { display:table; margin:40px auto; width:580px; border-collapse:collapse; }
+    .tb tr { display:table-row; }
+    .tb td, .tb th { display:table-cell; }
+    .tb th { height: 48px; border-bottom:1px solid #fff; color:#fff; background-color:rgb(166, 205, 72); 
+    width:120px; }
+    .tb td { height: 48px; border-bottom:1px solid rgb(166, 205, 72); text-align:left;
+    padding-left:80px; border-right:2px solid rgb(166, 205, 72); }
+    .tb tr:first-child th { border-top:2px solid rgb(166, 205, 72); }
+    .tb tr:first-child td { border-top:2px solid rgb(166, 205, 72); }
+    .tb tr:last-child th { border-bottom:2px solid rgb(166, 205, 72); }
+    .tb tr:last-child td { border-bottom:2px solid rgb(166, 205, 72); }
+  </style>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<th:block th:include="common/header"></th:block>
+  <div class="wrapper">
+    <div class="content" id="content">
+	    <div class="row column text-center">
+			<section class="page">
+				<div class="page_wrap">
+					<h2 class="page_title">자유게시판 상세보기</h2>
+					  <div class="tb_fr">
+						  <table class="tb">
+							  <tbody th:object="${noticeDetail}">             
+								<tr>
+									<th>No</th>
+									<td th:text="*{notino}"></td>
+								</tr>
+								<tr>
+									<th>Title</th>
+									<td th:text="*{title}"></td>
+								</tr>
+								<tr>
+									<th>Content</th>
+									<td th:text="*{content}"></td>
+								</tr>
+								<tr>
+									<th>Author</th>
+									<td th:text="*{author}"></td>
+								</tr>
+								<tr>
+									<th>ResDate</th>
+									<td th:text="*{resdate}"></td>
+								</tr>
+							</tbody> 
+						</table>
+						<div class="button-group" >
+							<button th:if="${cusId}!=''" type="button" class="btn btn-primary" href="">글 수정</button>
+						</div>
+					</div>
+				</div>
+			</section>
+	    </div>
+	</div>
+  </div>
+<th:block th:include="common/footer"></th:block>
+</body>
+</html>

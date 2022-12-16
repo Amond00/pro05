@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shop.myapp.dao.QnaDAO">
+    <!-- 글 목록보기(질문만) -->
+    <select id="qnaList" resultType="com.shop.myapp.dto.QnaDTO">
+        select * from qna where lev=0
+	</select>
+    <!-- 글 상세보기 질문추출 -->
+	<select id="qnaDetail" resultType="com.shop.myapp.dto.QnaDTO">
+		select * from qna where parno=#{parno} and lev=0
+	</select>
+    <!-- 글 상세보기 답변추출 -->
+	<select id="qnaDetail2" resultType="com.shop.myapp.dto.QnaDTO">
+		select title as title2, content as content2 from qna where parno=#{parno} and lev=1
+	</select>
+	<!-- 글 질문 작성-->
+	<insert id="qnaQInsert" useGeneratedKeys="true" keyProperty="no">
+		insert into qna (no, title, content, author, parno, lev) values (default, #{title}, #{content}, #{author}, (select last_insert_id())+1, 0)
+	</insert>
+	<!-- 글 답변 작성-->
+	<insert id="qnaAInsert" >
+		insert into qna (no, title, content, author, parno, lev) values (default, #{title}, #{content}, 'admin', #{parno}, 1)
+	</insert>
+	<!-- 글 질문 수정-->
+	<update id="qnaQUpdate">
+		update qna set (title, content) values (#{title}, #{content}) where no=#{no }
+	</update>
+	<!-- 글 답변 수정-->
+	<update id="qnaAUpdate">
+		update qna set (title, content) values (#{title}, #{content}) where no=#{no }
+	</update>
+	<!-- 글 삭제 Q,A 둘다 일괄 삭제-->
+	<delete id="qnaDelete">
+		delete from qna where parno=#{parno }
+	</delete>
+</mapper>

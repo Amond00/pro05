@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <title>상품 페이지</title>
+  <th:block th:include="common/head"></th:block>
+  <style>
+	th { background-color: rgb(166, 205, 72); color: white;}
+  </style>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+  <th:block th:include="common/header"></th:block>
+  <div class="wrapper">
+	<th:block th:include="common/sidebar"></th:block>
+    <div class="content" id="content">
+	    <div class="row column text-center">
+	      <h2>상품 목록</h2>
+		  <section>
+			<div class="container">
+				<div class="row column text-center">
+				  <table class="tb">
+					  <thead>
+						  <tr>
+							  <th style="text-align:center; ">No</th>
+							  <th style="text-align:center; ">Title</th>
+							  <th style="text-align:center; ">author</th>	
+							  <th style="text-align:center; ">ResDate</th>
+						  </tr>
+					  </thead>
+					  <tbody>
+						<tr th:each="noticeList : ${noticeList}">
+							<td th:text="${noticeList.notino}"></td>
+							<td><a th:text="${noticeList.title}" th:href="@{/notice/noticeDetail.do(notino=${noticeList.notino})}"></a></td>
+							<td th:text="${noticeList.author}"></td>
+							<td th:text="${noticeList.resdate}"></td>
+						</tr>	
+					  </tbody>
+				  </table>
+				  <div class="button-group" >
+					<button th:if="${cusId}!=''" type="button" class="btn btn-primary" href="">글쓰기</button>
+				</div>
+				</div>
+			</div>
+		</section>
+	    </div>
+	</div>
+  </div>
+  <th:block th:include="common/footer"></th:block>
+</body>
+</html>

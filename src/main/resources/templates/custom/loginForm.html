@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+  <title>로그인 페이지</title>
+  <th:block th:include="common/head"></th:block>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: white;
+      height: 100vh;
+    }
+
+    #login .container #login-row #login-column #login-box {
+      margin-top: 120px;
+      max-width: 600px;
+      height: 320px;
+      background-color: white;
+    }
+
+    #login .container #login-row #login-column #login-box #login-form {
+      padding: 20px;
+    }
+
+    #login .container #login-row #login-column #login-box #login-form #register-link {
+      margin-top: -85px;
+    }
+  </style>
+  <!-- <script>
+    //로그인 실패 스크립트.
+    $(document).ready(function(){
+         massage1 = $(".massage").text();
+      $(".login").click(function(){
+          if(massage1 != null){
+          alert(massage1);
+        } else {
+          return null;
+        }
+      });
+    });
+  </script> -->
+</head>
+<span class="massage" th:text="${session.massage}" style="display: none;"></span>
+<body class="hold-transition sidebar-mini layout-fixed">
+  <div class="wrapper">
+    <th:block th:include="common/header"></th:block>
+    <section>
+      <div id="login">
+        <div class="container">
+          <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-6">
+              <div id="login-box" class="col-md-12">
+                <form id="login-form" class="form" action="/custom/login.do" method="post">
+                  <h3 class="text-center text-muted">로그인</h3>
+                  <div class="form-group">
+                    <label for="cusId" class="text-muted">아이디:</label><br>
+                    <input type="text" name="cusId" id="cusId" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="cusPw" class="text-muted">비밀번호:</label><br>
+                    <input type="password" name="cusPw" id="cusPw" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="saveId" class="text-muted"><span>아이디 기억하기</span>
+                      <span><input class="save_id" name="checkId" id="saveId" type="checkbox"></span></label><br>
+                    <input type="submit" name="submit" class="btn btn-primary btn-md login" value="로그인">
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <th:block th:include="common/footer"></th:block>
+  </div>
+</body>
+</html>

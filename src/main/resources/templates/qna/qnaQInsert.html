@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <title>QnA 게시판</title>
+  <th:block th:include="common/head"></th:block>
+  <style>
+	th { color: white;}
+  </style>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<th:block th:include="common/header"></th:block>
+<form action="qnaQInsert.do" method="post">
+	<h1 style="margin: 15px; text-align: center;">QnA-Q 질문 작성</h1>
+	<nav style="background-color: rgb(166, 205, 72); width: 1000px; margin-left: 470px; border: 1px #333 solid;" >
+		<table class="table">
+				<tr>
+					<th>질문 제목</th>
+					<td><textarea name="title" id="title" cols="100" rows="1"></textarea></td>
+				</tr>
+				<tr>
+					<th style="width: 100px;">작성자</th>
+					<td><textarea th:text="${session.sid}" name="author" id="author" required readonly cols="10" rows="1"></textarea></td>
+				</tr>
+				<tr>
+					<th>내용</th>
+					<td><textarea name="content" id="content" cols="100" rows="20"></textarea></td>
+				</tr>
+		</table>
+	</nav>
+	<div class="btn-group">
+		<button class="btn btn-primary" type="submit" style="margin-right: 5px; margin-left: 470px; margin-top: 30px;">질문 작성</button>
+		<a class="btn btn-primary" type="button" href="qnaList.do" style="margin-top: 30px; margin-left: 810px;">목록으로</a>
+	</div>
+</form>
+<th:block th:include="common/footer"></th:block>
+</body>
+</html>

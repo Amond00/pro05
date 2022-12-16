@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <title>공지사항</title>
+  <th:block th:include="common/head"></th:block>
+  <style>
+	th { background-color: rgb(166, 205, 72); color: white;}
+  </style>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<th:block th:include="common/header"></th:block>
+  <div class="wrapper">
+    <div class="content" id="content">
+	    <div class="row column text-center">
+	      <h2>공지사항 목록</h2>
+		  <section>
+			<div class="container">
+				<div class="row column text-center">
+				  <table class="tb">
+					  <thead>
+						  <tr>
+							  <th style="text-align:center; ">No</th>
+							  <th style="text-align:center; width: 800px;">Title</th>
+							  <th style="text-align:center; ">author</th>	
+							  <th style="text-align:center; ">ResDate</th>
+							  <th style="text-align:center; ">Visitied</th>
+						  </tr>
+					  </thead>
+					  <tbody>
+						<tr th:each="boardList : ${boardList}">
+							<td th:text="${boardList.no}"></td>
+							<td><a th:text="${boardList.title}" th:href="@{/board/boardDetail.do(no=${boardList.no})}"></a></td>
+							<td th:text="${boardList.author}"></td>
+							<td th:text="${boardList.resdate}"></td>
+							<td th:text="${boardList.visited}"></td>
+						</tr>	
+					  </tbody>
+				  </table>
+				  <div class="button-group" >
+					<button th:if="${cusId}=='admin'" type="button" class="btn btn-primary" href="">글쓰기</button>
+				</div>
+				</div>
+			</div>
+		</section>
+	    </div>
+	</div>
+  </div>
+<th:block th:include="common/footer"></th:block>
+</body>
+</html>
