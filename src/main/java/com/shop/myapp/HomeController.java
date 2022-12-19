@@ -13,10 +13,4 @@ public class HomeController {
         return "Ok Spring Boot Main";
     }
 
-    @RequestMapping(value = "/home", method = RequestMethod.GET)
-    @ResponseBody
-    public String goHome(HttpServletRequest request) {
-        System.out.println("OK~!");
-        return "Hello Spring Boot";
-    }
 }
