@@ -7,9 +7,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping(value = "/sub/")
 public class SubController {
+
     @GetMapping("sub1.do")
-    public String sub1() throws Exception {
+    public String getSub1() throws Exception {
         return "sub/sub1";
+    }
+
+    @GetMapping("sub2.do")
+    public String getSub2() throws Exception {
+        return "sub/sub2";
+    }
+
+    @GetMapping("sub3.do")
+    public String getSub3() throws Exception {
+        return "sub/sub3";
     }
 
 }

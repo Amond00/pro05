@@ -24,7 +24,7 @@
 							  <th style="text-align:center; width: 80px;">No</th>
 							  <th style="text-align:center; width: 120px;">구매자 아이디</th>
 							  <th style="text-align:center; width:80px;">상품 코드</th>	
-							  <th style="text-align:center; ">상품명</th>	
+							  <th style="text-align:center; " class="pn">상품명</th>	
 							  <th style="text-align:center; width:120px;">가격</th>
 						  </tr>
 					  </thead>
@@ -37,14 +37,12 @@
 							<td th:text="${cartList.amount}"></td>		
 							<script th:inline="javascript">
 								$(document).ready(function(){
+									var product;
 									 /*<![CDATA[*/
-									var no = /*[[ ${cartList.proNo} ]]*/;
+									var no = /*[[ ${cartList.proNo} ]]*/
 									/*]]*/
-									if(no==1){
-										$(".proname").text(no)
-									} else if(no==2) {
-										$(".proname").text(no)
-									}
+									console.log(no);
+
 								});
 							</script>
 						</tr>	

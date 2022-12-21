@@ -12,8 +12,8 @@
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <li><a class="dropdown-item" href="/sub/sub1.do">브랜드 스토리</a></li>
-                    <li><a class="dropdown-item" href="">CEO 메세지</a></li>
-                    <li><a class="dropdown-item" href="">ESG 지속가능경영</a></li>
+                    <li><a class="dropdown-item" href="/sub/sub2.do">CEO 메세지</a></li>
+                    <li><a class="dropdown-item" href="/sub/sub3.do">ESG 지속가능경영</a></li>
                   </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -65,7 +65,7 @@
                 <li class="nav-item" th:if="${session.sid}==null">
                   <a class="nav-link" href="/custom/agree.do" style="color:blue; font-weight: bolder;">회원가입</a>
                 </li>
-                <li class="nav-item" th:if="${session.sid}!=null" style="margin-left:778px;">
+                <li class="nav-item" th:if="${session.sid}!=null" style="margin-left:978px;">
                   <a class="nav-link" th:text="${session.sid}+님" style="font-weight: bolder;"></a>
                 </li>
                 <li class="nav-item" th:if="${session.sid}!=null">
@@ -87,4 +87,5 @@
         </div>
       </div>
     </nav>
-    <hr class="featurette-divider" style="margin-bottom:2px;">
+    <!-- <hr class="featurette-divider" style="margin-bottom:2px;"> -->
+    <br><div style="border-bottom: 0.1px solid #0000008C; margin-bottom: 2px;"></div>
