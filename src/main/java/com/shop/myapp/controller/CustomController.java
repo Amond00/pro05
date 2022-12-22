@@ -10,6 +10,7 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -93,7 +94,7 @@ public class CustomController {
 
     // 회원가입 처리
     @RequestMapping(value = "join.do", method = RequestMethod.POST)
-    public String CustomJoin(HttpServletRequest request, Model model, CustomDTO cusdto) throws Exception {
+    public String customJoin(HttpServletRequest request, Model model, CustomDTO cusdto) throws Exception {
         cusdto.setCusId(request.getParameter("cusid"));
         cusdto.setCusPw(request.getParameter("cuspw"));
         cusdto.setCusName(request.getParameter("cusname"));
@@ -110,5 +111,8 @@ public class CustomController {
     // 회원목록
 
     // 회원탈퇴
-
+    @GetMapping("delete.do")
+    public String customdelete() throws Exception {
+        return "redirect:/";
+    }
 }
