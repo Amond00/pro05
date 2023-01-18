@@ -3,83 +3,47 @@
  xmlns:th="http://www.thymeleaf.org"
  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 </html>
-<div class="footer">
-    <!-- Footer -->
-    <footer class="text-center text-lg-start bg-light text-muted">
-        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom" style="margin-top: 50px;">
-        </section>
-        <section class="">
-          <div class="container text-center text-md-start mt-5">
-            <!-- Grid row -->
-            <div class="row mt-3">
-              <!-- Grid column -->
-              <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                <!-- Content -->
-                <h6 class="text-uppercase fw-bold mb-4">
-                  <i class="fas fa-gem me-3"><img src="https://static.oliveyoung.co.kr/pc-static-root/image/footer/foot_logo_yearend.png" alt="하단로고"></i>
-                </h6>
-                <p>
-                  씨제이올리브영 주식회사<br>
-                  대표이사 : 구창근 | <br> 사업자등록번호 : 809-81-01574 <br>
-                  주소 : (04323) 서울특별시 용산구 <br> 한강대로 372, 24층 <br>
-                  통신판매업신고번호 : <br> 2019-서울용산-1428 <br>
-                  이메일 : oliveweb@cj.net <br>
-                </p>
-              </div>
-              <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                <!-- Links -->
-                <h6 class="text-uppercase fw-bold mb-4">
-                  회사소개
-                </h6>
-                <p>
-                  <a href="#!" class="text-reset">브랜드 스토리</a>
-                </p>
-                <p>
-                  <a href="#!" class="text-reset">CEO 메세지</a>
-                </p>
-                <p>
-                  <a href="#!" class="text-reset">ESG 지속가능경영</a>
-                </p>
-              </div>
-
-              <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                <h6 class="text-uppercase fw-bold mb-4">
-                  제품
-                </h6>
-                <p>
-                  <a href="#!" class="text-reset">스킨케어</a>
-                </p>
-                <p>
-                  <a href="#!" class="text-reset">헤어케어</a>
-                </p>
-                <p>
-                  <a href="#!" class="text-reset">향수/디퓨저</a>
-                </p>
-              </div>
-
-              <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                <h6 class="text-uppercase fw-bold mb-4">
-                    고객센터
-                </h6>
-                <p>
-                  <a href="#!" class="text-reset">자유게시판</a>
-                </p>
-                <p>
-                  <a href="#!" class="text-reset">공지사항</a>
-                </p>
-                <p>
-                  <a href="#!" class="text-reset">QnA게시판</a>
-                </p>
-                <p>
-                  <a href="#!" class="text-reset">FAQ게시판</a>
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-          © 2021 Copyright:
-          <a class="text-reset fw-bold" href="https://mdbootstrap.com/">2017~2021 국가고객만족도(NCSI) 헬스앤뷰티전문점 업계 최초 5년 연속 1위​</a>
-        </div>
-      </footer>
-</div>
+<head>
+<style>
+.ft { clear:both; width: 100%; height: 200px; background-color: #333; padding-bottom: 50px; }
+.ft_wrap { clear:both; width: 1200px; margin: 0 auto; padding-top: 50px;  }
+.ft_wrap:after { content:""; display:block; clear:both; }
+.ft_logo { float:left; width: 150px; }
+.mid_box { float:left; width: 760px; padding-left: 100px; }
+.fnb { clear:both; }
+.fnb a { color:#fff; font-size:16px; padding: 24px; }
+.fnb a.dpc { color:deeppink; }
+.addr { padding-left: 24px; color:#ececec; padding-top: 20px; font-size:14px; line-height: 2; }
+.copyright { padding-left: 24px; color:#fff; padding-top: 10px; }
+.sel_box { float:right; border-bottom:1px solid #fff;height: 44px; line-height: 44px; text-align:center; width: 140px; }
+#sel { border:none; outline: none; background-color: transparent; color:#fff; }
+#sel option { color:#333; }  
+</style>
+</head>
+<footer class="ft">
+  <div class="ft_wrap">
+      <div class="ft_logo"><img src="./img/lg_logo2.png" alt="하단로고" width=144px; height=26.04px; ></div>
+      <div class="mid_box">
+          <nav class="fnb">
+              <a href="" class="dpc">개인정보 처리 방침</a>
+              <a href="" class="dpc">이용약관</a>
+              <a href="" class="dpc">이메일무단수집거부</a>
+          </nav>
+          <p class="addr">LG_DISPLAY | e-VOS/협력사 | 등록 | 개인정보처리방침 | 문의/제안 | SITEMAP <br>
+              대표전화 02-3773-1114</p>
+          <p class="copyright">COPYRIGHT ⓒ LG DISPLAY CO., LTD. ALL RIGHTS RESERVED.</p>
+      </div>
+      <div class="sel_box">
+          <select name="sel" id="sel" class="sel" onchange="sel_link(this)">
+              <option value="">파트너 사이트</option>
+              <option value="https://www.ohcare.org:6200/main.do">산업보건 지원보상 신청</option>
+              <option value="https://partner.lgdisplay.com:8443/partner.main.RetrieveMain.dev">LGD출입예약시스템</option>
+          </select>
+      </div>
+      <script>
+      function sel_link(sel){
+          location.href = sel.value;
+      }
+      </script>
+  </div>
+</footer>

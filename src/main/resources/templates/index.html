@@ -1,129 +1,215 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
- xmlns:th="http://www.thymeleaf.org"
- xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-  <title>Main Page</title>
-  <th:block th:include="common/head"/>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-  <style type="text/css">
-    .content {
-       background-color: #0a0a0a;
-    }
-    #simg {
-       margin: 0 auto;
-       width: 1200px;
-       height: 500px;
-    }
-    .em {
-       color : #FEFEFE;
-    }
-    #ssimg img {
-       width: 1125px;
-       height: 570px;
-       overflow: hidden;
-    }
-    span {
-      position: absolute;
-      z-index: 100;
-      color: black;
-      margin-left: 400px;
-      margin-top: 50px;
-      font-size: 48px;
-      color: #1f1f1f;
-      line-height: 56px;
-    }
-    strong {
-      position: absolute;
-      z-index: 100;
-      color: black;
-      margin-left: 400px;
-      font-size: 24px;
-      color: #1f1f1f;
-      line-height: 56px;
-      margin-top: 230px;
-    }
-    
- </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>메인 페이지</title>
+  <th:block th:include="common/head" />
+  <style>
+  /* content */
+  .page { clear:both; width: 100%; }
+  .page_wrap { width: 1200px; margin: 0 auto; }
+  #page1, #page3 { background-color:#ececec; }
+  .page_tit { text-align: center; font-size:32px; padding-top:1.2em; padding-bottom: 0.8em; }
+  .lst { clear:both; width: 1200px; }
+  .lst:after { content:""; display:block; clear: both;}
+  .lst li { margin-bottom: 40px; }
+  .lst li.left { float:left; width: 816px; height: 459px;}
+  .lst li.right { float:right; width:350px; height: 459px; }
+  .ico_lst { clear:both; width: 100%; overflow:hidden; }
+  .ico_lst li a { display:block; background-repeat: no-repeat; background-position:0px center; background-size:auto 80%; padding-left: 55px; }
+  .cate_tit { color:#222; font-size:20px; padding-bottom: 0.5em; }
+  .cate_com { color:#222; font-size:14px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+
+  #page2 { background-color: rgba(230, 248, 255, 0.5); }
+  .pic_lst { clear:both; width: 100%; padding-bottom: 80px; }
+  .pic_lst:after { content:""; display:block; clear:both; }
+  .pic_lst li { float:left; position:relative; margin-bottom: 40px; }
+  .pic_lst li a { display:block; width: 360px; margin-right: 40px;overflow: hidden; height: 300px; }
+  .pic_lst li a img { display:block; width:600px; margin-left: -120px; transition-duration:0.8s; }
+  .pic_lst li a:hover img { margin-left: 0; }
+  .pic_lst li a .hv_box { width: 360px; height: 300px; color:#fff; opacity:0; position:absolute; top:0; left: 0;
+                              z-index:10; transition-duration:0.8s; background-color:transparent; }
+  .pic_lst li a:hover .hv_box { opacity:1; }
+  .pic_tit { position:absolute; top:30px; left: 30px; text-shadow:0px 0px 3px red; }
+  .pic_com { position:absolute; right:30px; bottom:30px; text-shadow:0px 0px 3px blue; }
+
+  #page3 { background-repeat: no-repeat; background-size: cover; background-position:center center; height: 100vh; 
+              background-image:url("./img/bg_partners.jpg"); overflow:hidden; }
+  #page3 .page_wrap { width: 100%; }
+  .circle_lst { clear:both; width: 4455px; }
+  .circle_lst li { width: 200px; height: 200px; position:relative; border-radius:120px; overflow:hidden; background-color: #fff; float:left; margin:28px;  }
+  .circle_lst.lst2 li { float:right; }
+  .circle_lst li a { display:block; width: 100%; height: 100%; }
+  .circle_lst li a img { display:block; width:160px; height:auto; position:absolute; top:50%; left: 20px; z-index:11; margin-top: -28px; }  
+  </style>
+  <script>
+    $(document).ready(function(){
+        $("<ul class='circle_lst lst2'></ul>").insertAfter($(".circle_lst"));
+        $lst1_obj = $(".circle_lst li").clone();
+        $(".circle_lst.lst2").append($lst1_obj);
+    });    
+</script>
 </head>
 <body>
-  <th:block th:include="common/header"/>
-  <section>
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
-      </div>
-      <div class="carousel-inner">
-        <span>올해 마지막<br/>
-              최대혜택<br/>
-              올영세일</span>
-              <strong>오늘까지 ~70%할인 누려요</strong>
-        <div class="carousel-item active">
-          <img src="https://image.oliveyoung.co.kr/uploads/images/display/90000010001/1/385951095945631455.jpg" class="d-block w-100" alt="...">     
+  <div class="wrap">
+    <th:block th:include="common/header" />
+    <div class="content">
+      <figure class="vs">
+        <video src="./video/mainv.mp4" class="vdo" autoplay muted loop></video>
+      </figure>
+      <section class="page" id="page1">
+        <div class="page_wrap">
+          <ul class="lst">
+            <li class="left">
+              <iframe name="vdo2" id="vdo2" width="560" height="315" src="https://www.youtube.com/embed/XWB25P8sm4Q"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </li>
+            <li class="right">
+              <ul class="ico_lst">
+                <li>
+                  <a href="https://www.youtube.com/embed/XWB25P8sm4Q" target="vdo2" class="icon1">
+                    <h3 class="cate_tit">Environment</h3>
+                    <p class="cate_com">지구를 생각하는 마음으로
+                      재활용률 100%를 달성하는 그날까지!</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.youtube.com/embed/KbAxfKlcG8Q" target="vdo2" class="icon2">
+                    <h3 class="cate_tit">Social</h3>
+                    <p class="cate_com">함께 나눌수록 기쁨은 커지니까! 나눔을 실천하는 LG 디스플레이의 사회공헌 이야기</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.youtube.com/embed/gHT2D7INnuk" target="vdo2" class="icon3">
+                    <h3 class="cate_tit">Governance</h3>
+                    <p class="cate_com">고객가치를 최우선에 두고 흔들림 없이 지속가능경영을 펼치고 있는 LG 디스플레이</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
-        <div class="carousel-item">
-          <img src="https://image.oliveyoung.co.kr/uploads/images/display/90000010001/1/7358836360100640264.jpg" class="d-block w-100" alt="...">
+      </section>
+      <section class="page" id="page2">
+        <div class="page_wrap">
+          <h2 class="page_tit">OLED Features</h2>
+          <ul class="pic_lst">
+            <li>
+              <a href="">
+                <img src="./img/features1.jpg" alt="세계 최대 가전 박람회" class="pic">
+                <div class="hv_box">
+                  <h3 class="pic_tit">세계 최대 가전 박람회</h3>
+                  <p class="pic_com">IFA 2022 속 LG디스플레이</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <img src="./img/features2.jpg" alt="OLED로 만들어낸 미래도시" class="pic">
+                <div class="hv_box">
+                  <h3 class="pic_tit">OLED로 만들어낸 미래도시</h3>
+                  <p class="pic_com">K-Display 2022에서 펼쳐지다</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <img src="./img/features3.jpg" alt="OLED Shelf, 2022 레드닷 디자인 어워드 디자인 컨셉 부문 Winner 수상"
+                  class="pic">
+                <div class="hv_box">
+                  <h3 class="pic_tit">OLED Shelf, 2022 레드닷 디자인 어워드 디자인 컨셉 부문 Winner 수상</h3>
+                  <p class="pic_com">공간에 제약 받지 않는 Home Display, OLED Shelf</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <img src="./img/features4.jpg" alt="제 2회 OLEDs Go!" class="pic">
+                <div class="hv_box">
+                  <h3 class="pic_tit">제 2회 OLEDs Go!</h3>
+                  <p class="pic_com">공모전 수상작 발표 1위 수상작 케일럼</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <img src="./img/features5.jpg" alt="투명 OLED로 변화하는 오피스 인테리어" class="pic">
+                <div class="hv_box">
+                  <h3 class="pic_tit">투명 OLED로 변화하는 오피스 인테리어</h3>
+                  <p class="pic_com">디지털 환경과 실제 공간이 만나다</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <img src="./img/features6.jpg" alt="미래형 매장의 시작" class="pic">
+                <div class="hv_box">
+                  <h3 class="pic_tit">미래형 매장의 시작</h3>
+                  <p class="pic_com">‘랩(Lab) 오브 파리바게뜨’</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <img src="./img/features7.jpg" alt="2022 구겐하임 YCC 파티" class="pic">
+                <div class="hv_box">
+                  <h3 class="pic_tit">2022 구겐하임 YCC 파티</h3>
+                  <p class="pic_com">투명 OLED로 더 빛이 난 그 현장 속으로</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <img src="./img/features8.jpg" alt="SBS 방송에서 만난 OLED" class="pic">
+                <div class="hv_box">
+                  <h3 class="pic_tit">SBS 방송에서 만난 OLED</h3>
+                  <p class="pic_com">디스플레이의 미래를 엿보다</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <img src="./img/features9.jpg" alt="SID 2022 : 끊임없이 진화하는 OLED의 신기술" class="pic">
+                <div class="hv_box">
+                  <h3 class="pic_tit">SID 2022 : 끊임없이 진화하는 OLED의 신기술</h3>
+                  <p class="pic_com">새로운 미래를 열다</p>
+                </div>
+              </a>
+            </li>
+          </ul>
         </div>
-        <div class="carousel-item">
-          <img src="https://image.oliveyoung.co.kr/uploads/images/display/90000010001/1/8508959982412157285.jpg" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-          <img src="https://image.oliveyoung.co.kr/uploads/images/display/90000010001/1/6279728041802963878.jpg" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-          <img src="https://image.oliveyoung.co.kr/uploads/images/display/90000010001/1/2142929310290785225.jpg" class="d-block w-100" alt="...">
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-        <span class="visually-hidden">Next</span>
-      </button>
+      </section>
     </div>
-  </section>
-
-  <section>
-    <main class="container">
-      <div class="swiper mySwiper" id="simg">
-          <div class="swiper-wrapper">
-              <div class="swiper-slide" id="ssimg">
-                  <img src="https://www.kangolkorea.com/main/22.jpg" />
-              </div>
-              <div class="swiper-slide" id="ssimg">
-                  <img src="https://www.kangolkorea.com/main/22.jpg" />
-              </div>
-              <div class="swiper-slide" id="ssimg">
-                  <img src="https://www.kangolkorea.com/main/24.jpg" />
-              </div>
-          </div>
-          <div class="swiper-pagination"></div>
+    <section class="page" id="page3">
+      <div class="page_wrap">
+        <h2 class="page_tit"><img src="./img/lg_partner.png" width="" alt=""></h2>
+        <ul class="circle_lst lst1">
+          <li><a href=""><img src="./img/page3_1.png" alt="파트너스01" class="thumb"></a></li>
+          <li><a href=""><img src="./img/page3_2.png" alt="파트너스02" class="thumb"></a></li>
+          <li><a href=""><img src="./img/page3_3.png" alt="파트너스03" class="thumb"></a></li>
+          <li><a href=""><img src="./img/page3_4.png" alt="파트너스04" class="thumb"></a></li>
+          <li><a href=""><img src="./img/page3_5.png" alt="파트너스05" class="thumb"></a></li>
+          <li><a href=""><img src="./img/page3_6.png" alt="파트너스06" class="thumb"></a></li>
+          <li><a href=""><img src="./img/page3_7.png" alt="파트너스07" class="thumb"></a></li>
+          <li><a href=""><img src="./img/page3_8.png" alt="파트너스08" class="thumb"></a></li>
+          <li><a href=""><img src="./img/page3_9.png" alt="파트너스09" class="thumb"></a></li>
+          <li><a href=""><img src="./img/page3_10.png" alt="파트너스10" class="thumb"></a></li>
+          <li><a href=""><img src="./img/page3_11.png" alt="파트너스11" class="thumb"></a></li>
+          <li><a href=""><img src="./img/page3_12.png" alt="파트너스12" class="thumb"></a></li>
+          <li><a href=""><img src="./img/page3_13.png" alt="파트너스13" class="thumb"></a></li>
+          <li><a href=""><img src="./img/page3_14.png" alt="파트너스14" class="thumb"></a></li>
+          <li><a href=""><img src="./img/page3_15.png" alt="파트너스15" class="thumb"></a></li>
+          <li><a href=""><img src="./img/page3_16.png" alt="파트너스16" class="thumb"></a></li>
+          <li><a href=""><img src="./img/page3_17.png" alt="파트너스17" class="thumb"></a></li>
+        </ul>
       </div>
-      <script>
-        var swiper = new Swiper(".mySwiper", {
-          effect: "cube",
-          grabCursor: true,
-          autoplay : true,
-          loop:true,
-          loopAdditionalSlides: 1,
-          cubeEffect: {
-            shadow: true,
-            slideShadows: true,
-            shadowOffset: 20,
-            shadowScale: 0.94,
-          },
-          pagination: {
-            el: ".swiper-pagination",
-          },
-        });
-      </script>
-    </main>
-  </section>
-	<th:block th:include="common/footer"/>
+    </section>
+    <th:block th:include="common/footer" />
+  </div>
 </body>
 </html>
