@@ -1,168 +1,251 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-
 <head>
-    <title>회원가입</title>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <th:block th:include="common/head"></th:block>
+<title>회원가입</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<th:block th:include="common/head"/>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<style>
+/* header.css */
+.hd { position:fixed; }
+
+/* content */
+.vs { clear:both; width: 100%; height:300px; overflow: hidden; }
+.vs img { display:block; width: 100%; height:auto; }
+.bread { clear:both; width: 100%; line-height: 60px; border-bottom:3px solid #eee; }
+.bread_fr { width: 1200px; margin: 0 auto; }
+.page { clear:both; width: 100%; min-height:100vh;}
+.page:after { content:""; display:block; clear:both; }
+.page_wrap { width: 1200px; margin: 0 auto; margin-top: 100px;}
+
+.page_title { padding-top: 1em; text-align: center; }
+.home { color:#333; }
+
+.frm { border:2px solid #333; }
+.frm_tb { display:table; margin:40px auto;  }
+.frm_tb tr { display:table-row; }
+.frm_tb td, .frm_tb th { display:table-cell; }
+.frm_tb th { width:200px; height: 48px;  }
+.frm_tb td { width:300px; height: 48px; }
+
+.in_dt { background-color:#fff; height:32px; line-height: 32px; width: 280px; 
+color:#f36; font-size:16px; text-indent:0.5em; }
+.in_btn { display:block; background-color:#333; min-width:120px; height: 36px; 
+line-height: 32px; border-radius:20px; float:left; cursor:pointer; }
+.in_btn:hover { background-color: deepskyblue; }
+
+.frm_tb { display:table; }
+.frm_tb li { display:table-row; }
+.frm_tb .td, .frm_tb .th, .frm_tb .td2 { display:table-cell; }
+.frm_tb .th { width:200px; }
+.frm_tb .td { width:200px; }
+.frm_tb .td2 { width:400px; }
+
+
+</style>
 </head>
-
 <body>
-    <th:block th:include="common/header"></th:block>
-    <section class="vh-100" style="background-color: #eee;">
-        <div class="container h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-lg-12 col-xl-11">
-                    <div class="card text-black" style="border-radius: 25px;">
-                        <div class="card-body p-md-5">
-                            <div class="row justify-content-center">
-                                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">회원가입</p>
-                                    <form class="mx-1 mx-md-4" action="/custom/join.do" method="post" onsubmit="return joinCheck(this)" name="frm1" id="frm1">
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0">
-                                                <label class="form-label" for="form3Example1c">아이디</label>
-                                                <input type="text" id="cusid" name="cusid" class="form-control" maxlength="12" required/>
-                                                <input type="button" id="idCkBtn" class="btn btn-primary" value="아이디 중복 체크" onclick="idCheck()" style="margin-top: 4px;">
-                                                <input type="hidden" name="idck" id="idck" value="no"/>
-                                                <p id="msg"></p>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0">
-                                                <label class="form-label" for="form3Example3c">비밀번호</label>
-                                                <input type="password" id="cuspw" name="cuspw" class="form-control" maxlength="150" required/>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0">
-                                                <label class="form-label" for="form3Example3c">비밀번호 확인</label>
-                                                <input type="password" id="cuspw2" name="cuspw2" class="form-control" maxlength="150" required/>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0">
-                                                <label class="form-label" for="form3Example3c">이름</label>
-                                                <input type="text" id="cusname" name="cusname" class="form-control" required/>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0">
-                                                <label class="form-label" for="form3Example3c">우편번호 및 주소</label>
-                                                <input type="text" id="postcode" name="postcode" class="form-control" placeholder="우편번호" maxlength="9" style="margin-bottom: 4px;"/>
-                                                <input type="text" id="address" name="address" class="form-control" maxlength="200" placeholder="주소"/>
-                                                <input type="text" id="address2" name="address2" class="form-control" maxlength="200" placeholder="상세주소"/>
-                                                <input type="button" id="isAddrBtn" class="btn btn-primary" value="주소 입력" onclick="findAddr()" style="margin-top: 4px;">
-                                            </div>
-                                        </div>
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0">
-                                                <label class="form-label" for="form3Example3c">전화번호</label>
-                                                <input type="tel" id="tel" name="tel" class="form-control" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}" maxlength="19" required />
-                                            </div>
-                                        </div>
-
-                                        <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                            <button type="submit" class="btn btn-primary btn-lg">회원가입</button>
-                                        </div>
-                                    </form>
-
-                                    <script>
-                                    $(document).ready(function(){
-                                        $("#cusid").keyup(function(){
-                                            $("#idck").val("no");
-                                            if($(this).val()!=""){
-                                                $("#msg").html("<strong>아이디 입력중입니다.</strong>");
-                                            } else {
-                                                $("#msg").html("아직 아이디 중복 체크를 하지 않으셨습니다.");
-                                            }
-                                        });
-                                    });
-                                    </script>
-                                    <script>
-                                    function idCheck(){
-                                        if($("#cusid").val()==""){
-                                            alert("아이디를 입력하지 않으셨습니다.");
-                                            $("#cusid").focus();
-                                            return;
-                                        } 
-                                        var params = { cusid : $("#cusid").val()	} //전송되어질 데이터를 객체로 묶음
-                                        $.ajax({
-                                            url:"/custom/idCheck.do",	//아이디가 전송되어질 곳
-                                            type:"post",		//전송방식
-                                            dataType:"json",	//데이터 반환 방식
-                                            data:params,		//전송방식이 post인 경우 객체로 묶어서 전송
-                                            success:function(result){
-                                                console.log(result.result);
-                                                var idChk = result.result;	//true 또는 false를 받음
-                                                if(idChk==false){	//사용할 수 없는 아이디
-                                                    $("#idck").val("no");
-                                                    $("#msg").html("<strong style='color:red'>기존에 사용되고 있는 아이디 입니다. 다시 입력하시기 바랍니다.</strong>");
-                                                    $("#cusid").focus();
-                                                } else if(idChk==true){	//사용 가능한 아이디
-                                                    $("#idck").val("yes");
-                                                    $("#msg").html("<strong style='color:blue'>사용가능한 아이디 입니다.</strong>");
-                                                } else if(idck==""){
-                                                    $("#msg").html("<strong>아이디가 확인되지 않았습니다. 다시 시도해주시기 바랍니다.</strong>");
-                                                }
-                                            },
-                                            error : function(){
-				                                alert("서버요청실패");
-                                            }
-                                        });
-                                    }
-                                    function joinCheck(f){
-                                        if(f.cuspw.value!=f.cuspw2.value){
-                                            alert("비밀번호와 비밀번호 확인이 서로 다릅니다.");
-                                            f.pw.focus();
-                                            return false;
-                                        }
-
-                                        if(f.idck.value!="yes"){
-                                            alert("아이디 중복 체크를 하지 않으셨습니다.");
-                                            return false;
-                                        }
-                                    }
-                                    </script>
-                                    <script>
-                                        function findAddr() {
-                                            new daum.Postcode({
-                                                oncomplete: function(data) {
-                                                    console.log(data);
-                                                    var roadAddr = data.roadAddress;
-                                                    var jibunAddr = data.jibunAddress;
-                                                    document.getElementById("postcode").value = data.zonecode;
-                                                    if(roadAddr !== '') {
-                                                        document.getElementById("address").value = roadAddr;				
-                                                    } else if(jibunAddr !== ''){
-                                                        document.getElementById("address").value = jibunAddr;
-                                                    }
-                                                    document.getElementById("address2").focus();
-                                                }
-                                            }).open();
-                                        }
-                                        </script>
-                                    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <th:block th:include="common/header" />
+    <div class="wrap">
+        <div class="content">
+            <figure class="vs">
+                <img src="/img/product_main.png" alt="비주얼">
+            </figure>
+            <div class="bread">
+                <div class="bread_fr">
+                    <a href="/" class="home">HOME</a> &gt;
+                    <span class="sel">회원가입</span>
                 </div>
             </div>
+            <section class="page">
+                <div class="page_wrap">
+                    <form action="join.do" method="post" onsubmit="return joinck(this)" name="frm1" id="joinForm" class="frm">
+                        <table class="frm_tb tb">
+                            <tbody>
+                                <tr>
+                                    <th><label>아이디</label></th>
+                                    <td>
+                                        <input type="text" id="id" name="id" class="in_dt" required/>
+                                        <input type="hidden" name="idck" id="idck" value="no"/>
+                                        <c:if test="${empty qid }">
+                                                <p id="msg" style="color:red;">아이디 중복 체크를 하지 않으셨습니다.</p>
+                                        </c:if>
+                                    </td>
+                                    <td>
+                                        <input type="button" value="아이디 중복 체크" class="in_btn idck" id="idck_btn" style="margin-top: -22px; margin-left: -30px;"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th><label>비밀번호</label></th>
+                                    <td> <input type="password" id="pw" name="pw" class="in_dt" requierd/></td>
+                                    <th><label>비밀번호 확인</label></th>
+                                    <td>    
+                                        <input type="text" id="pw2" name="pw2" class="in_dt" required/>
+                                        <div id="msg2"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th><label>이름</label></th>
+                                    <td>
+                                        <input type="text" id="name" name="name" class="in_dt" required/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th><label>이메일</label></th>
+                                    <td>
+                                        <input type="email" id="email" name="email" class="in_dt" required/>
+                                    </td>
+                                </tr>   
+                                <tr>
+                                    <th><label>주소</label></th>
+                                    <td>
+                                        <input type="text" name="postcode" id="postcode" class="in_dt" placeholder="우편번호" maxlength="9" required readonly>
+                                        <input type="text" name="addr1"  id="addr1" class="in_dt" placeholder="기본주소" maxlength="150" required readonly><br><br>
+                                        <input type="text" name="addr2"  id="addr2" class="in_dt" placeholder="상세주소를 입력해 주세요" maxlength="90" required><br><br>
+                                        <input type="hidden" name="address" id="address" />
+                                        <input type="hidden" name="addrck" id="addrck" value="no"/>
+                                        <p id="addrmsg" style="color:red;">주소 입력이 되지 않았습니다. </p>
+                                    </td>
+                                    <td>
+                                        <input type="button" id="isAddrBtn" class="in_btn" value="주소 입력" onclick="findAddr()">
+                                        <button type="button" class="in_btn" id="addrbtn">주소 입력 후 클릭</button>
+                                    </td>
+                                </tr>
+                                <tr>   
+                                    <th><label >전화번호</label></th> 
+                                    <td>
+                                        <input type="tel" id="tel" name="tel" class="in_dt" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}" maxlength="19" required/>
+                                    </td>        
+                                </tr>    
+                                <tr>
+                                    <td colspan="2">
+                                        <button type="submit" class="in_btn">회원가입</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </section>
         </div>
-    </section>
+        <script>
+        //주소관련 스크립트
+        function findAddr() {
+            new daum.Postcode({
+                oncomplete: function(data) {
+                    console.log(data);
+                    var roadAddr = data.roadAddress;
+                    var jibunAddr = data.jibunAddress;
+                    document.getElementById("postcode").value = data.zonecode;
+                    if(roadAddr !== '') {
+                        document.getElementById("addr1").value = roadAddr;				
+                    } else if(jibunAddr !== ''){
+                        document.getElementById("addr1").value = jibunAddr;
+                    } 
+                }
+            }).open();
+        }
+        $(document).ready(function(){
+            $("#addrbtn").click(function(){
+                var addr1 = $("#addr1").val();
+                var addr2 = $("#addr2").val();
+                var postcode = $("#postcode").val();
+                if(addr1!='' && addr2!='' && postcode!=''){
+                    $("#address").val(postcode+" ,"+addr1+" ,"+addr2);
+                    $("#addrmsg").html("<strong>성공적으로 주소가 입력되었습니다.</strong>").css("color","blue");
+                    $("#addrck").val("yes");
+                }
+            });
+            $("#addr2").keyup(function(){
+                $("#addrck").val("no");
+                $("#addrmsg").html("<strong>주소가 정상적으로 입력되지 않았습니다.</strong>").css("color","red");
+            });
+        });
+        </script>
+        <script>
+        $(document).ready(function(){
+            //아이디 관련 스크립트
+            $("#id").keyup(function(){
+                $("#idck").val("no");
+                if($(this).val()!=""){			
+                    $("#msg").html("중복체크 필요");
+                } else {
+                    $("#msg").html("아직 아이디 중복 체크를 하지 않으셨습니다.");
+                }
+            });
+            
+            $("#idck_btn").click(function(){
+                if($("#id").val()==""){
+                    alert("아이디를 입력하지 않으셨습니다.");
+                    $("#id").focus();
+                    return;
+                } 
+                var params = {	id : $("#id").val()	} //전송되어질 데이터를 객체로 묶음
+                console.log(params);
+                $.ajax({
+                    url:"/custom/idCheck.do",	//아이디가 전송되어질 곳
+                    type:"post",		//전송방식
+                    dataType:"json",	//데이터 반환 방식
+                    data:params,		//전송방식이 post인 경우 객체로 묶어서 전송
+                    success:function(result){
+                        console.log(result.result);
+                        var idChk = result.result;	//true 또는 false를 받음
+                        if(idChk==false){	//사용할 수 없는 아이디
+                            $("#idck").val("no");
+                            $("#msg").html("<strong style='color:red'>기존에 사용되고 있는 아이디 입니다.</strong>");
+                            $("#id").focus();
+                        } else if(idChk==true){	//사용 가능한 아이디
+                            $("#idck").val("yes");
+                            $("#msg").html("<strong style='color:blue'>사용가능한 아이디 입니다.</strong>");
+                        } else if(idck==""){
+                            $("#msg").html("<strong>아이디가 확인되지 않았습니다. 다시 시도해주시기 바랍니다.</strong>");
+                        }
+                    }
+                });
+            });
+        //비밀번호 관련 스크립트	 
+        var pwck = false;	 
+        $("#pw1 , #pw2").keyup(function(){
+            var pw = $("#pw").val();
+            var pw2 = $("#pw2").val();
+            if(pw!=pw2){
+                $("#msg2").html("비밀번호가 일치하지 않습니다.").css("color","red");
+                $("#pw2").focus();
+            } else {
+                $("#msg2").html("비밀번호가 일치합니다.").css("color","blue");
+                pwck = true;
+            }
+        });
+        
+        });
+        </script>
+        <script>
+        //최종 확인 스크립트	 
+        function joinck(f){
+            if($("#idck").val()=='no'){
+                alert("아이디 중복체크가 되지 않았습니다.");
+                $("#id").focus();
+                return false;
+            }
+            if(pwck==false){
+                alert("비밀번호와 비밀번호 확인란의 값이 일치하지 않습니다.");
+                $("#pw").focus();
+                return false;
+            }
+            if($("#addrck").val()=='no'){
+                alert("주소가 정상적으로 입력되지 않았습니다.");
+                $("#addr2").focus();
+                return false;
+            }
+        };
+        
+        </script>
+        <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    </div>
 
-    <th:block th:include="common/footer"></th:block>
+    <th:block th:include="common/footer"/>
 </body>
-
 </html>

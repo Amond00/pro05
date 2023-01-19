@@ -11,6 +11,5 @@ import com.shop.myapp.dto.BoardDTO;
 @Repository
 public interface BoardDAO {
     List<BoardDTO> boardList();
-
     BoardDTO boardDetail(BoardDTO dto);
 }

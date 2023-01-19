@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 
     @RequestMapping("/")
-    public String goMain() {
+    public String MainPage() {
         return "index";
     }
 

@@ -10,11 +10,8 @@ import com.shop.myapp.dto.CustomDTO;
 @Mapper
 @Repository
 public interface CustomDAO {
-    public CustomDTO login(CustomDTO cusdto) throws Exception;
-
     public CustomDTO customJoin(CustomDTO cusdto) throws Exception;
-
-    public List<CustomDTO> customList() throws Exception;
-
     public CustomDTO idCheck(String cusid) throws Exception;
+    public CustomDTO login(CustomDTO cusdto) throws Exception;
+    public List<CustomDTO> customList() throws Exception;
 }

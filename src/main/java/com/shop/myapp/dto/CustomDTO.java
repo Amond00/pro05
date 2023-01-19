@@ -4,13 +4,12 @@ import lombok.Data;
 
 @Data
 public class CustomDTO {
-    String cusId;
-    String cusPw;
-    String cusName;
-    String address;
-    String tel;
-    String regDate;
-    int point;
-    int level;
-    int visited;
+    private String id;
+    private String pw;
+    private String name;
+    private String email;
+    private String address;
+    private String tel;
+    private String regDate;
+    private int visited;
 }

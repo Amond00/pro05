@@ -31,9 +31,9 @@ public class BoardController {
     // 공지게시판 상세보기
     @GetMapping("boardDetail.do")
     public String getboardDetail(Model model, @RequestParam int no) throws Exception {
-        BoardDTO boarddto = new BoardDTO();
-        boarddto.setNo(no);
-        BoardDTO boardDetail = boardService.boardDetail(boarddto);
+        BoardDTO dto = new BoardDTO();
+        dto.setNo(no);
+        BoardDTO boardDetail = boardService.boardDetail(dto);
         model.addAttribute("boardDetail", boardDetail);
         return "board/boardDetail";
     }

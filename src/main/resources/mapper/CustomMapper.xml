@@ -3,11 +3,11 @@
 <mapper namespace="com.shop.myapp.dao.CustomDAO">
     <!-- 로그인 (컨트롤러 처리)-->
     <select id="login" resultType="com.shop.myapp.dto.CustomDTO">
-        select * from custom where cusId = #{cusId } 
+        select * from custom where id = #{id } 
 	</select>
 	<!-- 방문 횟수 증가 -->
 	<update id="visitedUp">
-		update custom set visited=visited+1, point=point+5 where cusid=#{cusid }
+		update custom set visited=visited+1 where id=#{id }
 	</update>
     <!-- 회원 목록 -->
 	<select id="customList" resultType="com.shop.myapp.dto.CustomDTO">
@@ -15,14 +15,14 @@
 	</select>
     <!-- 회원 탈퇴 -->	
 	<delete id="customDelete">
-	    delete from custom where cusId=#{cusId }	
+	    delete from custom where id=#{id }	
 	</delete>	
     <!-- 회원가입 -->
     <insert id="customJoin">
-		insert into custom values (#{cusId}, #{cusPw}, #{cusName}, #{address}, #{tel}, default, default, default, default)
+		insert into custom values (#{id}, #{pw}, #{name}, #{email}, #{address}, #{tel}, default, default)
 	</insert>
 	<!-- 아이디 체크 -->
 	<select id="idCheck" resultType="com.shop.myapp.dto.CustomDTO">
-		select * from custom where cusid=#{cusid}
+		select * from custom where id=#{id}
 	</select>
 </mapper>

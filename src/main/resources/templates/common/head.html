@@ -1,36 +1,34 @@
 <html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
  xmlns:th="http://www.thymeleaf.org"
  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-<c:set var="path1" value="${pageContext.request.contextPath }" />
-<meta charset="UTF-8">
- <meta http-equiv="X-UA-Compatible" content="IE=edge">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <!-- boot strap css js jq-->
- <script src="https://code.jquery.com/jquery-latest.js"></script>
- <!-- 파비콘 -->
- <link rel="icon" href="https://image9.coupangcdn.com/image/coupang/favicon/v2/favicon.ico">
- <!-- data tables -->
+<head>
+<!-- <c:set var="path1" value="${pageContext.request.contextPath }" /> -->
+<!-- Jquery -->
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<!-- 파비콘 -->
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
+<!-- data tables -->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css"/>
-<link rel="stylesheet" href="/css/reset.css">
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.js"></script>
-<script src="/js/html5shiv.js"></script>
+<link rel="stylesheet" href="/css/reset.css">
+<!-- <script src="/js/html5shiv.js"></script>
 <script src="/js/prefixfree.min.js"></script>
-<script src="/js/respond.min.js"></script>
+<script src="/js/respond.min.js"></script> -->
 <script>
 $(document).ready( function () {
     $('.tb').DataTable();
 } );
+$(document).ready(function(){
+    $(window).scroll(function(){
+        var ht = $(window).height();
+        var tp = $(this).scrollTop();
+        if(tp>=600){
+            $(".hd").css("position","fixed");
+        } else {
+            $(".hd").css("position","absolute");
+        }
+    });
+});    
 </script>
-<script>
-    $(document).ready(function(){
-        $(window).scroll(function(){
-            var ht = $(window).height();
-            var tp = $(this).scrollTop();
-            if(tp>=600){
-                $(".hd").css("position","fixed");
-            } else {
-                $(".hd").css("position","absolute");
-            }
-        });
-    });    
-</script>
+</head>

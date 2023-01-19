@@ -21,6 +21,8 @@ public class MvcConfiguration implements WebMvcConfigurer {
 		re.addResourceHandler("/js/**").addResourceLocations("classpath:/static/js/");
 		/* '/css/**'로 호출하는 자원은 '/static/css/' 폴더 아래에서 찾는다. */
 		re.addResourceHandler("/css/**").addResourceLocations("classpath:/static/css/");
+		/* '/common/**'로 호출하는 자원은 '/static/common/' 폴더 아래에서 찾는다. */
+		re.addResourceHandler("/common/**").addResourceLocations("classpath:/templates/common/");
 	
 	}
 }

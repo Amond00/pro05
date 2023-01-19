@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제품</title>
+<th:block th:include="common/head" />
+<style>
+/* header.css */
+.hd { position:fixed; }
+
+/* content */
+.vs { clear:both; width: 100%; height:300px; overflow: hidden; }
+.vs img { display:block; width: 100%; height:auto; }
+.bread { clear:both; width: 100%; line-height: 60px; border-bottom:3px solid #eee; }
+.bread_fr { width: 1200px; margin: 0 auto; }
+.page { clear:both; width: 100%; min-height:100vh;}
+.page:after { content:""; display:block; clear:both; }
+.page_wrap { width: 1200px; margin: 0 auto; }
+.content { display:none; }
+.content:target { display:block; }
+
+.page_title { padding-top: 1em; }
+.home { color:#333; }
+.to_top { position:fixed; bottom:80px; right:80px; z-index:999; 
+background-color:rgba(11,11,11,0.75); color:#fff; display:block; width: 60px;
+height: 60px; line-height: 60px; text-align: center; font-size:20px; border-radius:32px; visibility:hidden; transition-duration:0.8s; }
+.to_top:hover { background-color: deepskyblue; }
+.to_top.on { visibility: visible; }
+
+/* content 2 */
+.page_title { text-align: center; font-size: 50px; margin-bottom: 50px;}
+.pdc_img { float: left; }
+.pdc_img > img { float: left; width: 600px; height: 300px; margin-bottom: 50px; margin-right: 20px; }
+.pdc_tit { float: right; margin-right: 140px; color: gray; font-size: 24px; margin-bottom: 50px; text-align: center;}
+.pdc_com {float: right; margin-right: 50px; width: 500px; text-align: center; line-height: 25px;}
+.pdc_li { margin: 10px;}
+.vs2 { clear: both; text-align: center; width: 100%; display: block; }
+</style>
+</head>
+<body>
+    <th:block th:include="common/header" />
+
+    <div class="wrap">
+        <div class="content" id="page1">
+            <figure class="vs">
+                <img src="/img/product_main.png" alt="비주얼">
+            </figure>
+            <div class="bread">
+                <div class="bread_fr">
+                    <a href="/" class="home">HOME</a> &gt;
+                    <select name="sel1" id="sel1" class="sel">
+                        <option>제품</option>
+                        <option value="/sub/technology.do#page1">기술</option>
+                        <option value="/sub/esg.do#page1">ESG</option>
+                        <option value="/sub/company.do#page1">기업정보</option>
+                        <option value="/sub/invest.do#page1">투자정보</option>
+                    </select> &gt; 
+                    <select name="sel2" id="sel2" class="sel">
+                        <option value="" selected>TV</option>
+                        <option value="/sub/product.do#page2">IT</option>
+                        <option value="/sub/product.do#page3">Mobile</option>
+                    </select>
+                </div>
+            </div>
+            <section class="page">
+                <div class="page_wrap">
+                    <h2 class="page_title">TV Display</h2>
+                    <ul class="pdc">
+                        <li class="pdc_li">
+                            <figure class="vs2">
+                                <video src="/video/product_main.mp4" class="vdo" autoplay muted loop></video>
+                            </figure>
+                            <h3 class="pdc_tit"></h3>
+                            <p class="pdc_com">
+                                
+                            </p>
+                        </li>
+                        <li class="pdc_li">
+                            <div class="pdc_img"><img src="/img/product_tv1.png" alt=""></div>
+                            <h3 class="pdc_tit">Cinematic Sound OLED TV</h3>
+                            <p class="pdc_com">
+                                TV를 볼 때 시선은 앞을 향하지만, 소리는 옆에서 들려와 어색하시지 않으셨나요?
+                                측면에서 나오는 TV소리는 장면과의 일치감을 저해하여 혼란스럽고 어색함을 느끼게 합니다.
+                                Cinematic Sound OLED는 화면과 사운드의 정확한 일치로 높은 몰입도와 생동감을 선사합니다.
+                                전면 지향의 사운드는 기존 TV 대비 더욱 생생하고 현장감 있는 사운드를 만들어냅니다.
+                                Cinematic Sound OLED로 영화관에 있는 듯한 최상의 몰입형 사운드를 경험해보세요.
+                            </p>
+                        </li>
+                        <li class="pdc_li">
+                            <div class="pdc_img"><img src="/img/product_tv2.png" alt=""></div>
+                            <h3 class="pdc_tit">Wallpaper SLIM DESIGN TV</h3>
+                            <p class="pdc_com">
+                                자체발광 OLED로 무게와 두께로부터의 해방
+                                궁극의 얇고 가벼운 디자인을 자랑하는 Wallpaper OLED는 백라이트 없이 스스로 빛을 내는 자발광 디스플레이입니다.
+                                초슬림 패널과 베젤이 보이지 않은 화면은 벽에 완전히 밀착되어 당신이 꿈꾸던 거실을 연출할 수 있습니다.
+                            </p>
+                        </li>
+                        <li class="pdc_li">
+                            <div class="pdc_img"><img src="/img/product_tv3.png" alt=""></div>
+                            <h3 class="pdc_tit">MINIMALISM 공간의 자유</h3>
+                            <p class="pdc_com">
+                                스크린으로 막혀 있던 공간을 활용하세요
+                                Rollable OLED는TV 대형화에 따른 Black Monster 등 인테리어 저해 요소를 제거하여, 주변과 완벽한 조화를 이루게 해줍니다.
+                                부분 화면에서부터 전체 화면까지 Roll-up, Roll-down 으로 조절 가능한 새로운 개념의 디스플레이를 누려보세요.
+                                지금까지 세상에 없었던 혁신적인 디자인, Rollable OLED 스크린에서만 만날 수 있습니다.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <div class="content" id="page2">
+            <figure class="vs">
+                <img src="/img/product_main.png" alt="비주얼">
+            </figure>
+            <div class="bread">
+                <div class="bread_fr"><a href="/" class="home">HOME</a> &gt;
+                    <select name="sel3" id="sel3" class="sel">
+                        <option>제품</option>
+                        <option value="/sub/technology.do#page1">기술</option>
+                        <option value="/sub/esg.do#page1">ESG</option>
+                        <option value="/sub/company.do#page1">기업정보</option>
+                        <option value="/sub/invest.do#page1">투자정보</option>
+                    </select> &gt; 
+                    <select name="sel4" id="sel4" class="sel">
+                        <option value="" selected>IT</option>
+                        <option value="/sub/product.do#page1">TV</option>
+                        <option value="/sub/product.do#page3">Mobile</option>
+                    </select>
+                </div>
+            </div>
+            <section class="page">
+                <div class="page_wrap">
+                    <h2 class="page_title">IT Display</h2>
+                    <figure class="vs2">
+                        <video src="/video/product_it.mp4" class="vdo" autoplay muted loop></video>
+                    </figure>
+                    <ul class="pdc">
+                        <li class="pdc_li">
+                            <div class="pdc_img"><img src="/img/product_it1.png" alt=""></div>
+                            <h3 class="pdc_tit">편리하고 선명한 IT Display</h3>
+                            <p class="pdc_com">
+                                LG디스플레이는 사용자 편의성을 극대화시킬 수 있는
+                                다양한 모니터, 2 in 1, 노트북, 태블릿, 올인원 PC용 제품들을 선보이고 있습니다
+                            </p>
+                        </li>
+                        <li class="pdc_li">
+                            <div class="pdc_img"><img src="/img/product_it2.png" alt=""></div>
+                            <h3 class="pdc_tit">섬세하고 부드러운 펜 터치</h3>
+                            <p class="pdc_com">
+                                LG디스플레이는 별도의 터치 패널을 사용하지 않고 디스플레이 패널과 결합한 in-TOUCH 기술을 적용합니다.<br>
+                                가볍고 얇으면서 섬세한 터치 성능을 구현하고, Active Pen을 지원하여 편의성을 높였습니다.
+                            </p>
+                        </li>
+                        <li class="pdc_li">
+                            <div class="pdc_img"><img src="/img/product_it3.png" alt=""></div>
+                            <h3 class="pdc_tit">더욱 생생한 LG디스플레이</h3>
+                            <p class="pdc_com">
+                                LG디스플레이는 화면을 통해서도 실제와 똑같은 세상을 보고 싶어하는 소비자 요구에 맞춰,
+                                더욱 선명한 고화질과 넓은 시야각을 제공하는 IPS 기반의 IT 제품을 개발/생산합니다.
+                            </p>
+                        </li>
+                        <li class="pdc_li">
+                            <div class="pdc_img"><img src="/img/product_it4.png" alt=""></div>
+                            <h3 class="pdc_tit">더 진화한 IPS, IPS Black</h3>
+                            <p class="pdc_com">
+                                IPS Black은 기존 IPS에서 명암비를 한단계 더 발전시켜
+                                블랙을 더 블랙답게 표현하고
+                                어느 각도에서든 더 정확한 색표현을 제공하는
+                                프리미엄 화질 솔루션입니다.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <div class="content" id="page3">
+            <figure class="vs">
+                <img src="/img/product_main.png" alt="비주얼">
+            </figure>
+            <div class="bread">
+                <div class="bread_fr">
+                    <a href="/" class="home">HOME</a> &gt;
+                    <select name="sel5" id="sel5" class="sel">
+                        <option>제품</option>
+                        <option value="/sub/technology.do#page1">기술</option>
+                        <option value="/sub/esg.do#page1">ESG</option>
+                        <option value="/sub/company.do#page1">기업정보</option>
+                        <option value="/sub/invest.do#page1">투자정보</option>
+                    </select> &gt; 
+                    <select name="sel6" id="sel6" class="sel">
+                        <option value="" selected>Mobile</option>
+                        <option value="/sub/product.do#page1">TV</option>
+                        <option value="/sub/product.do#page2">IT</option>
+                    </select>
+                </div>
+            </div>
+            <section class="page">
+                <div class="page_wrap">
+                    <h2 class="page_title">Mobile Display</h2>
+                    <figure class="vs2">
+                        <video src="/video/product_mobile.mp4" class="vdo" autoplay muted loop></video>
+                    </figure>
+                    <ul class="pdc">
+                        <li class="pdc_li">
+                            <div class="pdc_img"><img src="/img/product_mobile1.png" alt=""></div>
+                            <h3 class="pdc_tit">소비전력, 디자인의 한계를 뛰어넘다!</h3>
+                            <p class="pdc_com">
+                                LG디스플레이는 항상 손 안에 휴대하는 모바일 제품의<br> 특성에 맞춰 더
+                                크고 밝은 화면을 더 낮은 소비 전력과<br> 혁신적인 디자인으로 구현해 냈습니다.
+                            </p>
+                        </li>
+                        <li class="pdc_li">
+                            <div class="pdc_img"><img src="/img/product_mobile2.png" alt=""></div>
+                            <h3 class="pdc_tit">풀 스크린(Full Screen) 디스플레이</h3>
+                            <p class="pdc_com">
+                                LG디스플레이는 제품 내 디스플레이 면적 극대화를 위해 스마트폰의 카메라, 센서를 디스플레이 내
+                                홀(Hole)이나 노치(Notch) 영역에 배치하여, 더욱 꽉찬 화면을 제공하고 몰입감을 높여줍니다.
+                                궁극적으로 홀(Hole)이나 노치(Notch)가 없는 완벽한 풀스크린 디스플레이를 준비하고 있습니다.
+                            </p>
+                        </li>
+                        <li class="pdc_li">
+                            <div class="pdc_img"><img src="/img/product_mobile3.png" alt=""></div>
+                            <h3 class="pdc_tit">새로운 모바일 세상을 열어갈 OLED</h3>
+                            <p class="pdc_com">
+                                LG디스플레이의 플라스틱 기판을 적용한 OLED 는 얇고 가벼운 특성이 있으며, 일정한 곡률로 구부리는 게 가능하여, 슬림하면서 보다 높은
+                                디자인 자유도를 통한 모바일용 디스플레이에 최적화된 제품을 선보입니다.
+                                또한, 완벽한 블랙으로 인한 높은 명암비와 더욱 선명하고 풍부한 색감으로 차별화된 가치를 제공합니다.
+                            </p>
+                        </li>
+                        <li class="pdc_li">
+                            <div class="pdc_img"><img src="/img/product_mobile4.png" height="463px" alt=""></div>
+                            <h3 class="pdc_tit">획기적인 소비전력의 디스플레이</h3>
+                            <p class="pdc_com">
+                                LG디스플레이만의 고효율 OLED 소자 및 사용 Scene별<br> 구동 주파수 최적화를 통해 
+                                선명한 화면을 보다 더 오래,<br> 더 밝게 감상할 수 있습니다.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <script>
+            var sel = document.getElementsByClassName("sel");
+            for(var i=0;i<sel.length;i++){
+                sel[i].addEventListener("change", function(){
+                    if(this.value!="") location.href = this.value;
+                });
+            }
+        </script>
+    </div>
+    <script>
+        $(document).ready(function(){
+            $(".sel").change(function(){
+                var sel = $(this).children("option:selected").attr("value");
+                location.href = sel;
+            });
+        });
+        </script>
+    <th:block th:include="common/footer" />
+</body>
+</html>

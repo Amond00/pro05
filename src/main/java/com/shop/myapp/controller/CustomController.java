@@ -35,15 +35,15 @@ public class CustomController {
     }
 
     @RequestMapping(value = "login.do", method = RequestMethod.POST)
-    public String CustomLogin(@RequestParam String cusId, @RequestParam String cusPw) throws Exception {
+    public String CustomLogin(@RequestParam String id, @RequestParam String pw) throws Exception {
         session.invalidate();
-        CustomDTO cusdto = new CustomDTO();
-        cusdto.setCusId(cusId);
-        cusdto.setCusPw(cusPw);
-        CustomDTO login = customService.login(cusdto);
+        CustomDTO dto = new CustomDTO();
+        dto.setId(id);
+        dto.setPw(pw);
+        CustomDTO login = customService.login(dto);
         if (login != null) {
             session.invalidate();
-            session.setAttribute("sid", cusId);
+            session.setAttribute("sid", id);
             return "redirect:/";
         } else {
             session.invalidate();
@@ -95,9 +95,9 @@ public class CustomController {
     // 회원가입 처리
     @RequestMapping(value = "join.do", method = RequestMethod.POST)
     public String customJoin(HttpServletRequest request, Model model, CustomDTO cusdto) throws Exception {
-        cusdto.setCusId(request.getParameter("cusid"));
-        cusdto.setCusPw(request.getParameter("cuspw"));
-        cusdto.setCusName(request.getParameter("cusname"));
+        cusdto.setId(request.getParameter("cusid"));
+        cusdto.setPw(request.getParameter("cuspw"));
+        cusdto.setName(request.getParameter("cusname"));
         cusdto.setAddress(request.getParameter("address"));
         cusdto.setTel(request.getParameter("tel"));
         CustomDTO join = customService.customJoin(cusdto);
