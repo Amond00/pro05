@@ -1,6 +1,7 @@
 package com.shop.myapp.controller;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,9 +17,13 @@ import com.shop.myapp.service.BoardService;
 @RequestMapping(value = "/board/")
 public class BoardController {
 
-    // 공지게시판
     @Autowired
     BoardService boardService;
+
+    @GetMapping("boards.do")
+    public String boards() throws Exception {
+        return "board/boards";
+    }
 
     // 공지게시판 목록
     @GetMapping("boardList.do")

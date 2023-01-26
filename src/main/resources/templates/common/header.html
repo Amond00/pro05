@@ -10,7 +10,7 @@
 .logo { display:block; width: 144px; height: auto; float:left; margin:30px 0px; }
 .logo img { display:block; width: 100%; height: auto; }
 .tnb { float:right; margin: 30px 0px; }
-.tnb a { padding: 1.5em; font-size:12px; color: deepskyblue; }
+.tnb a { padding: 1.5em; font-size:12px; color: white; }
 .tnb a:hover { color:red; font-weight:700; text-decoration: underline; text-decoration-style:dotted; }
 
 
@@ -29,22 +29,30 @@
 .content { clear: both; width: 100%; }
 .vs3 { clear:both; width: 100%; height:100vh; overflow:hidden; }
 .vdo { display:block; width:100%; height:auto; }
+
+.sid { font-weight: bolder; color: white;}
 </style>
 </head>
 <header class="hd">
   <div class="hd_wrap">
       <a href="/" class="logo"><img src="/img/lg_logo2.png" alt=""></a>
-      <nav th:if="${sid == ''}" class="tnb">
+      <nav th:if="${#strings.isEmpty(session.sid)}" class="tnb">
         <a th:href="@{/custom/loginForm.do}" >로그인</a>
         <a th:href="@{/custom/agree.do }">회원가입</a>
-        <a th:href="@{/board/boardList.do }">게시판</a>
         <a th:href="@{/sub/sitemap.do}">사이트맵</a>
-    </nav>
-      <nav th:if="${sid != ''}" class="tnb">
-          
-          <a th:href="@{/board/boardList.do }">게시판</a>
+      </nav>
+      <nav th:if="${not #strings.isEmpty(session.sid)}" class="tnb">
+          <span th:text="${session.sid}+'님 환영합니다.'" class="sid"></span>
+          <a th:href="@{/custom/logout.do}">로그아웃</a>
+          <a th:href="@{/custom/customs }">회원기능</a>
           <a th:href="@{/sub/sitemap.do}">사이트맵</a>
       </nav>
+      <nav th:if="${session.sid=='admin'}" class="tnb">
+        <span th:text="${session.sid}+'님 환영합니다.'" class="sid"></span>
+        <a th:href="@{/custom/logout.do}">로그아웃</a>
+        <a th:href="@{/custom/admins }">관리자 기능</a>
+        <a th:href="@{/sub/sitemap.do}">사이트맵</a>
+    </nav>
       <nav class="gnb">
           <ul style="opacity: 0.85;">
               <li class="item1">

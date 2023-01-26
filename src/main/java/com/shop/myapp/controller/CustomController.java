@@ -36,17 +36,14 @@ public class CustomController {
 
     @RequestMapping(value = "login.do", method = RequestMethod.POST)
     public String CustomLogin(@RequestParam String id, @RequestParam String pw) throws Exception {
-        session.invalidate();
         CustomDTO dto = new CustomDTO();
         dto.setId(id);
         dto.setPw(pw);
         CustomDTO login = customService.login(dto);
         if (login != null) {
-            session.invalidate();
             session.setAttribute("sid", id);
             return "redirect:/";
         } else {
-            session.invalidate();
             String massage = "아이디 또는 비밀번호가 맞지 않습니다.";
             session.setAttribute("massage", massage);
             return "redirect:/custom/loginForm.do";
