@@ -13,4 +13,6 @@ public interface CustomService {
 
     public CustomDTO customJoin(CustomDTO cusdto) throws Exception;
 
+    public CustomDTO getMypage(String sid) throws Exception;
+
 }

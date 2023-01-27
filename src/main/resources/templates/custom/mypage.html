@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <title>마이 페이지</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <th:block th:include="common/head"></th:block>
+  <style>
+    /* header.css */
+    .hd {
+      position: fixed;
+    }
+
+    /* content */
+    .content { display:none; }
+    .content:target { display:block; }
+    .vs {
+      clear: both;
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+    }
+
+    .vs img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .bread {
+      clear: both;
+      width: 100%;
+      line-height: 60px;
+      border-bottom: 3px solid #eee;
+    }
+
+    .bread_fr {
+      width: 1200px;
+      margin: 0 auto;
+    }
+
+    .page {
+      clear: both;
+      width: 100%;
+      min-height: 60vh;
+    }
+
+    .page:after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+
+    .page_wrap {
+      width: 1200px;
+      margin: 0 auto;
+    }
+
+    .page_title {
+      padding-top: 1em;
+      text-align: center;
+    }
+
+    .home {
+      color: #333;
+    }
+
+    .frm {
+      border: 2px solid #333;
+      padding: 24px;
+      width: 580px;
+      margin: 50px auto;
+    }
+
+    .frm_tb {
+      display: table;
+      margin: 40px auto;
+    }
+
+    .frm_tb tr {
+      display: table-row;
+    }
+
+    .frm_tb td,
+    .frm_tb th {
+      display: table-cell;
+    }
+
+    .frm_tb th {
+      width: 200px;
+      height: 48px;
+    }
+
+    .frm_tb td {
+      width: 300px;
+      height: 48px;
+    }
+
+    .in_dt {
+      background-color: #fff;
+      height: 32px;
+      line-height: 32px;
+      width: 280px;
+      color: #f36;
+      font-size: 16px;
+      text-indent: 0.5em;
+    }
+
+    .in_btn {
+      display: block;
+      background-color: #333;
+      min-width: 120px;
+      height: 32px;
+      line-height: 32px;
+      border-radius: 20px;
+      float: left;
+      margin-left: 365px;
+      cursor: pointer;
+    }
+
+    .in_btn:hover {
+      background-color: deepskyblue;
+    }
+
+    /* ul > li 를 테이블 처럼 출력 */
+    .frm_tb {
+      display: table;
+      margin-left: -5px;
+    }
+
+    .frm_tb li {
+      display: table-row;
+    }
+
+    .frm_tb .td,
+    .frm_tb .th,
+    .frm_tb .td2 {
+      display: table-cell;
+    }
+
+    .frm_tb .th {
+      width: 200px;
+    }
+
+    .frm_tb .td {
+      width: 200px;
+    }
+
+    .frm_tb .td2 {
+      width: 400px;
+    }
+  </style>
+</head>
+<body>
+  <th:block th:include="common/header"></th:block>
+  <div class="wrap">
+    <div class="content" id="view">
+      <figure class="vs">
+        <img src="/img/product_main.png" alt="비주얼">
+      </figure>
+      <div class="bread">
+        <div class="bread_fr">
+          <a href="/" class="home">HOME</a> &gt;
+          <span class="sel">마이페이지</span>
+        </div>
+      </div>
+      <section class="page">
+        <div class="page_wrap">
+          <h2 class="page_title">마이페이지</h2>
+          <a href="#edit">수정</a>
+          <div class="form_fr">
+              <table th:object="${mypage }" class="frm_tb tb">
+                <tbody>
+                    <tr>
+                        <th>아이디</th>
+                        <td th:text="${mypage.id}"></td>
+                    </tr>
+                </tbody>
+              </table>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="content" id="edit">
+    <figure class="vs">
+        <img src="/img/product_main.png" alt="비주얼">
+    </figure>
+    <div class="bread">
+        <div class="bread_fr">
+            <a href="/" class="home">HOME</a> &gt;
+            <span class="sel">마이페이지</span>
+        </div>
+    </div>
+      <section class="page">
+            <div class="page_wrap">
+                <h2 class="page_title">마이페이지 수정</h2>
+                <div class="form_fr">
+                    <form action="updateMypage"></form>
+                        <table th:object="${mypage }" class="frm_tb tb">
+                            <tbody>
+                                <tr>
+                                    <th>아이디(*변경불가)</th>
+                                    <td><input th:text="${mypage.id}" type="text" readonly></td>
+                                </tr>
+                                <tr class="btns">
+                                    <button type="submit">수정</button>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+  </div>
+  <th:block th:include="common/footer"></th:block>
+</body>
+</html>

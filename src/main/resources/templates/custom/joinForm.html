@@ -32,10 +32,11 @@
 .frm_tb td { width:300px; height: 48px; }
 
 .in_dt { background-color:#fff; height:32px; line-height: 32px; width: 280px; 
-color:#f36; font-size:16px; text-indent:0.5em; }
+color:black; font-size:16px; text-indent:0.5em; }
 .in_btn { display:block; background-color:#333; min-width:120px; height: 36px; 
 line-height: 32px; border-radius:20px; float:left; cursor:pointer; }
 .in_btn:hover { background-color: deepskyblue; }
+.submit_btn {margin:20px; float: right;}
 
 .frm_tb { display:table; }
 .frm_tb li { display:table-row; }
@@ -75,7 +76,7 @@ line-height: 32px; border-radius:20px; float:left; cursor:pointer; }
                                         </c:if>
                                     </td>
                                     <td>
-                                        <input type="button" value="아이디 중복 체크" class="in_btn idck" id="idck_btn" style="margin-top: -22px; margin-left: -30px;"/>
+                                        <input type="button" value="아이디 중복 체크" class="in_btn idck" id="idck_btn" style="margin-top: -22px; margin-left: -5px;"/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -107,10 +108,8 @@ line-height: 32px; border-radius:20px; float:left; cursor:pointer; }
                                         <input type="text" name="addr2"  id="addr2" class="in_dt" placeholder="상세주소를 입력해 주세요" maxlength="90" required><br><br>
                                         <input type="hidden" name="address" id="address" />
                                         <input type="hidden" name="addrck" id="addrck" value="no"/>
-                                        <p id="addrmsg" style="color:red;">주소 입력이 되지 않았습니다. </p>
-                                    </td>
-                                    <td>
-                                        <input type="button" id="isAddrBtn" class="in_btn" value="주소 입력" onclick="findAddr()">
+                                        <p id="addrmsg" style="color:red;margin-top: -18px; margin-bottom: 5px;">주소 입력이 되지 않았습니다. </p>
+                                        <input type="button" id="isAddrBtn" class="in_btn" value="주소 입력" onclick="findAddr()" style="margin-right: 15px;">
                                         <button type="button" class="in_btn" id="addrbtn">주소 입력 후 클릭</button>
                                     </td>
                                 </tr>
@@ -120,13 +119,9 @@ line-height: 32px; border-radius:20px; float:left; cursor:pointer; }
                                         <input type="tel" id="tel" name="tel" class="in_dt" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}" maxlength="19" required/>
                                     </td>        
                                 </tr>    
-                                <tr>
-                                    <td colspan="2">
-                                        <button type="submit" class="in_btn">회원가입</button>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
+                        <button type="submit" class="in_btn submit_btn">회원가입</button>
                     </form>
                 </div>
             </section>

@@ -37,4 +37,9 @@ public class CustomServiceImpl implements CustomService {
     public CustomDTO idCheck(String cusid) throws Exception {
         return customDAO.idCheck(cusid);
     }
+
+    @Override
+    public CustomDTO getMypage(String sid) throws Exception {
+        return customDAO.idCheck2(sid);
+    }
 }
