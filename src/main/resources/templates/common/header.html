@@ -41,7 +41,7 @@
       <nav th:if="${not #strings.isEmpty(session.sid)}" class="tnb">
           <span th:text="${session.sid}+'님 환영합니다.'" class="sid"></span>
           <a th:href="@{/custom/logout.do}">로그아웃</a>
-          <a th:href="@{/custom/mypage.do}">마이페이지</a>
+          <a th:href="@{/custom/mypage.do#view}">마이페이지</a>
           <a th:href="@{/custom/customs }">회원기능</a>
           <th:block th:if="${session.sid == 'admin'}"><a th:href="@{/custom/admins }">관리자 기능</a></th:block>
           <a th:href="@{/sub/sitemap.do}">사이트맵</a>

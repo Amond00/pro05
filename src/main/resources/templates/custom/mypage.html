@@ -169,13 +169,33 @@
       <section class="page">
         <div class="page_wrap">
           <h2 class="page_title">마이페이지</h2>
-          <a href="#edit">수정</a>
+          <a class="myapge_btn" href="#edit">수정하기</a>
           <div class="form_fr">
               <table th:object="${mypage }" class="frm_tb tb">
                 <tbody>
                     <tr>
                         <th>아이디</th>
                         <td th:text="${mypage.id}"></td>
+                    </tr>
+                    <tr>
+                      <th>비밀번호</th>
+                      <td th:text="${mypage.pw}"></td>
+                    </tr>
+                    <tr>
+                      <th>이름</th>
+                      <td th:text="${mypage.name}"></td>
+                    </tr>
+                    <tr>
+                      <th>이메일</th>
+                      <td th:text="${mypage.email}"></td>
+                    </tr>
+                    <tr>
+                      <th>주소</th>
+                      <td th:text="${mypage.address}"></td>
+                    </tr>
+                    <tr>
+                      <th>전화번호</th>
+                      <td th:text="${mypage.tel}"></td>
                     </tr>
                 </tbody>
               </table>
@@ -184,35 +204,60 @@
       </section>
     </div>
     <div class="content" id="edit">
-    <figure class="vs">
-        <img src="/img/product_main.png" alt="비주얼">
-    </figure>
-    <div class="bread">
-        <div class="bread_fr">
-            <a href="/" class="home">HOME</a> &gt;
-            <span class="sel">마이페이지</span>
-        </div>
-    </div>
+      <figure class="vs">
+          <img src="/img/product_main.png" alt="비주얼">
+      </figure>
+      <div class="bread">
+          <div class="bread_fr">
+              <a href="/" class="home">HOME</a> &gt;
+              <span class="sel">마이페이지 수정</span>
+          </div>
+      </div>
       <section class="page">
-            <div class="page_wrap">
-                <h2 class="page_title">마이페이지 수정</h2>
-                <div class="form_fr">
-                    <form action="updateMypage"></form>
-                        <table th:object="${mypage }" class="frm_tb tb">
-                            <tbody>
-                                <tr>
-                                    <th>아이디(*변경불가)</th>
-                                    <td><input th:text="${mypage.id}" type="text" readonly></td>
-                                </tr>
-                                <tr class="btns">
-                                    <button type="submit">수정</button>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </form>
-                </div>
-            </div>
-        </section>
+        <div class="page_wrap">
+          <h2 class="page_title">마이페이지 수정</h2>
+          <a class="myapge_btn" href="#view">돌아가기</a>
+          <div class="form_fr">
+              <form action="updateMypage.do"></form>
+                  <table th:object="${mypage }" class="frm_tb tb">
+                      <tbody>
+                            <tr>
+                              <th>아이디</th>
+                              <td th:text="${mypage.id}"></td>
+                            </tr>
+                            <tr>
+                              <th>비밀번호</th>
+                              <td ><textarea th:text="${mypage.pw}" name="pw" id="pw" cols="20" rows="1"></textarea></td>
+                            </tr>
+                            <tr>
+                              <th>비밀번호 확인</th>
+                              <td><textarea name="pw2" id="pw2" cols="20" rows="1"></textarea></td>
+                            </tr>
+                            <tr>
+                              <th>이름</th>
+                              <td><textarea th:text="${mypage.name}" name="name" id="name" cols="10" rows="1"></textarea></td>
+                            </tr>
+                            <tr>
+                              <th>이메일</th>
+                              <td><textarea th:text="${mypage.email}" name="email" id="email" cols="20" rows="1"></textarea></td>
+                            </tr>
+                            <tr>
+                              <th>주소</th>
+                              <td th:text="${mypage.address}"></td>
+                            </tr>
+                            <tr>
+                              <th>전화번호</th>
+                              <td><textarea th:text="${mypage.tel}" name="tel" id="tel" cols="20" rows="1"></textarea></td>
+                            </tr>
+                            <tr>
+                              <button type="submit">수정</button>
+                            </tr>
+                      </tbody>
+                  </table>
+              </form>
+          </div>
+        </div>
+      </section>
     </div>
   </div>
   <th:block th:include="common/footer"></th:block>
